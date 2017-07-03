@@ -27,6 +27,7 @@ set cursorline
 
 set wildmenu
 set mouse=a
+set clipboard=unnamed
 
 command RTW :%s/\s\+$//e
 let g:netrw_browse_split=0
