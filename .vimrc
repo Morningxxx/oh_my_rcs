@@ -35,8 +35,8 @@ let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
 let g:netrw_winsize   = 15
 
-nnoremap <TAB> gt
-
+nmap <TAB> <C-w><C-w>
+command V :Vexplore
 
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
