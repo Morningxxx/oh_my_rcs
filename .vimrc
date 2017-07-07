@@ -30,7 +30,13 @@ set mouse=a
 set clipboard=unnamed
 
 command RTW :%s/\s\+$//e
-let g:netrw_browse_split=0
+let g:netrw_browse_split=4
+let g:netrw_preview   = 1
+let g:netrw_liststyle = 3
+let g:netrw_winsize   = 15
+
+nnoremap <TAB> gt
+
 
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
