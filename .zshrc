@@ -59,7 +59,7 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/go/bin:/usr/local/bin:$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 # You may need to manually set your language environment
