@@ -62,6 +62,9 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/go/bin:/usr/local/bin:$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -99,6 +102,4 @@ alias gct="git checkout"
 alias gcob="git checkout -b"
 alias gpl="git pull"
 alias gps="git push"
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
+. /Library/Python/2.7/site-packages/powerline/bindings/bash/powerline.sh
