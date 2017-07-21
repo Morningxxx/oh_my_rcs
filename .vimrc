@@ -32,7 +32,6 @@ nmap <TAB> <C-w><C-w>
 command V :Vexplore
 command L :Lexplore
 
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " these lnes setup the environment to show graphics and colors correctly.
 set nocompatible
@@ -40,11 +39,11 @@ set t_co=256
 colorscheme afterglow
 
 execute pathogen#infect()
-autocmd bufwritepost $myvimrc source $myvimrc
 let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint快
 let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712,W391'
 
 let g:minbufexplforcesyntaxenable = 1
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
