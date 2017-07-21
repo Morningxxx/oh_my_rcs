@@ -1,0 +1,5 @@
+ipython
+virtualenv
+virtualenvwrapper
+requests
+powerline-status
