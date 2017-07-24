@@ -1,7 +1,8 @@
-# oh_my_rcs
+# oh\_my\_rcs
 My rc files
 
-# Need
+# Needed
+* MacOS 10.11 or higher
 * Python 2.7
 
 # Usage
