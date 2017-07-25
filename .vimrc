@@ -25,11 +25,13 @@ vmap # :s/^/#/g<CR>
 vmap " :s/^/"/g<CR>
 vmap // :s/^/\/\//g<CR>
 
-nmap <CR> o<ESC>k
-"nmap <S-CR> O<ESC>j " only work on GVim
-nmap <Space><CR> O<ESC>j " only work on GVim
+nmap <CR> o<ESC>
+"nmap <S-CR> O<ESC> " only work on GVim
+nmap <Space><CR> O<ESC>
 
 command RTW :%s/\s\+$//e
+command Q :on | q
+
 let g:netrw_browse_split = 4
 let g:netrw_preview      = 1
 let g:netrw_liststyle    = 3
