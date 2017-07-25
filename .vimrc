@@ -21,12 +21,20 @@ set wildmenu
 set mouse=a
 set clipboard=unnamed
 
+vmap # :s/^/#/g<CR>
+vmap " :s/^/"/g<CR>
+vmap // :s/^/\/\//g<CR>
+
+nmap <CR> o<ESC>k
+"nmap <S-CR> O<ESC>j " only work on GVim
+nmap <Space><CR> O<ESC>j " only work on GVim
+
 command RTW :%s/\s\+$//e
-let g:netrw_browse_split=4
-let g:netrw_preview   = 1
-let g:netrw_liststyle = 3
-let g:netrw_winsize   = 25
-let g:netrw_list_hide= '.*\.pyc' 
+let g:netrw_browse_split = 4
+let g:netrw_preview      = 1
+let g:netrw_liststyle    = 3
+let g:netrw_winsize      = 25
+let g:netrw_list_hide    = '.*\.pyc' 
 
 nmap <TAB> <C-w><C-w>
 command V :Vexplore
