@@ -14,20 +14,54 @@ set hlsearch
 set incsearch
 set ignorecase
 set nu
+set rnu
 set cursorline
 "set cursorcolumn
 
+autocmd InsertEnter * :set nornu
+autocmd InsertLeave * :set rnu
+
 set wildmenu
 set mouse=a
+set ruler
 set clipboard=unnamed
 
-vmap # :s/^/#/g<CR>
-vmap " :s/^/"/g<CR>
-vmap // :s/^/\/\//g<CR>
+" Commenting blocks of code.
+autocmd FileType c,cpp,java,scala,javascript let b:comment_leader = '// '
+autocmd FileType sh,ruby,python              let b:comment_leader = '# '
+autocmd FileType conf,fstab                  let b:comment_leader = '# '
+autocmd FileType tex                         let b:comment_leader = '% '
+autocmd FileType mail                        let b:comment_leader = '> '
+autocmd FileType vim                         let b:comment_leader = '" '
+
+function CommentLine(mode)
+    let a:pattern = escape(b:comment_leader, '\/')
+    if a:mode == 'v'
+        try
+            execute "silent '<,'>s/^".a:pattern."//g"
+        catch
+            execute "silent '<,'>s/^/".a:pattern."/g"
+        endtry
+    elseif a:mode == 'n'
+        try
+            execute 'silent s/^'.a:pattern.'//g'
+        catch
+            execute 'silent s/^/'.a:pattern.'/g'
+        endtry
+    endif
+    nohlsearch
+endfunction
+
+nmap // :call CommentLine('n')<CR>
+vmap // :call CommentLine('v')<CR>
+" noremap <silent> // :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+noremap <silent> <C-_> :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+
+noremap <C-a> :call CommentLine()<CR> 
 
 nmap <CR> o<ESC>
-"nmap <S-CR> O<ESC> " only work on GVim
 nmap <Space><CR> O<ESC>
+"nmap <S-CR> O<ESC> " only work on GVim
 
 command RTW :%s/\s\+$//e
 command Q :on | q
