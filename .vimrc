@@ -74,7 +74,6 @@ let g:netrw_winsize      = 25
 let g:netrw_list_hide    = '.*\.pyc' 
 
 nmap <TAB> <C-w><C-w>
-command V :Vexplore
 
 " these lnes setup the environment to show graphics and colors correctly.
 set nocompatible
@@ -83,8 +82,11 @@ colorscheme afterglow
 
 execute pathogen#infect()
 
-command L :NERDTree
+command L :NERDTreeToggle
+command V :NERDTreeToggle
 command GT :GitGutterToggle
+
+let NERDTreeIgnore = ['.pyc$', '.swo$', '.swp$']
 
 let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint快
 let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712,W391'
