@@ -21,11 +21,13 @@ set cursorline
 autocmd InsertEnter * :set nornu
 autocmd InsertLeave * :set rnu
 
+set updatetime=250
+
 set wildmenu
 set mouse=a
 set ruler
 set clipboard=unnamed
-
+ 
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala,javascript let b:comment_leader = '// '
 autocmd FileType sh,ruby,python              let b:comment_leader = '# '
@@ -33,7 +35,6 @@ autocmd FileType conf,fstab                  let b:comment_leader = '# '
 autocmd FileType tex                         let b:comment_leader = '% '
 autocmd FileType mail                        let b:comment_leader = '> '
 autocmd FileType vim                         let b:comment_leader = '" '
-
 function CommentLine(mode)
     let a:pattern = escape(b:comment_leader, '\/')
     if a:mode == 'v'
@@ -52,12 +53,12 @@ function CommentLine(mode)
     nohlsearch
 endfunction
 
-nmap // :call CommentLine('n')<CR>
-vmap // :call CommentLine('v')<CR>
+nmap <silent> <C-_> :<C-w>call CommentLine('n')<CR>
+vmap <silent> <C-_> :<C-w>call CommentLine('v')<CR>
+nmap <silent> // :<C-w>call CommentLine('n')<CR>
+vmap <silent> // :<C-w>call CommentLine('v')<CR>
 " noremap <silent> // :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-noremap <silent> <C-_> :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
-
-noremap <C-a> :call CommentLine()<CR> 
+" noremap <silent> <C-_> :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 nmap <CR> o<ESC>
 nmap <Space><CR> O<ESC>
@@ -74,8 +75,6 @@ let g:netrw_list_hide    = '.*\.pyc'
 
 nmap <TAB> <C-w><C-w>
 command V :Vexplore
-command L :Lexplore
-
 
 " these lnes setup the environment to show graphics and colors correctly.
 set nocompatible
@@ -83,6 +82,10 @@ set t_co=256
 colorscheme afterglow
 
 execute pathogen#infect()
+
+command L :NERDTree
+command GT :GitGutterToggle
+
 let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint快
 let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712,W391'
 
