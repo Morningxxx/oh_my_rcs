@@ -48,6 +48,10 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 cd ~/.vim/bundle && \
     git clone --depth=1 https://github.com/vim-syntastic/syntastic.git
 
+# NERD tree
+git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
+
 # supertab
 cd ~/.vim/bundle
 pwd
@@ -57,8 +61,14 @@ git clone https://github.com/ervandew/supertab.git
 git clone git://github.com/tpope/vim-fugitive.git
 vim -u NONE -c "helptags vim-fugitive/doc" -c 
 
+# vim-gitgutter
+cd ~/.vim/bundle
+git clone https://github.com/airblade/vim-gitgutter
+
 # indentLine
+cd ~/.vim/bundle
 git clone https://github.com/Yggdroot/indentLine.git
 
 # jedi-vim
+cd ~/.vim/bundle
 git clone --recursive https://github.com/davidhalter/jedi-vim.git
