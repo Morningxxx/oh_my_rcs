@@ -21,7 +21,7 @@ set cursorline
 autocmd InsertEnter * :set nornu
 autocmd InsertLeave * :set rnu
 
-set updatetime=250
+set updatetime=500
 
 set wildmenu
 set mouse=a
@@ -38,6 +38,11 @@ autocmd FileType vim                         let b:comment_leader = '" '
 function CommentLine(mode)
     let a:pattern = escape(b:comment_leader, '\/')
     if a:mode == 'v'
+       "  try
+       "      execute "silent '<,'>s/^\v(\s*)\V".a:pattern."/\1/g"
+       "  catch
+       "      execute "silent '<,'>s/^\(\s*\)/\1".a:pattern."/g"
+       "  endtry
         try
             execute "silent '<,'>s/^".a:pattern."//g"
         catch
@@ -45,18 +50,25 @@ function CommentLine(mode)
         endtry
     elseif a:mode == 'n'
         try
-            execute 'silent s/^'.a:pattern.'//g'
+            execute 'silent s/^\v(\s*)\V'.a:pattern.'/\1/g'
         catch
-            execute 'silent s/^/'.a:pattern.'/g'
+            execute 'silent s/^\v(\s*)/\1'.a:pattern.'/g'
         endtry
     endif
     nohlsearch
 endfunction
 
+imap ( ()<Left>
+imap [ []<Left>
+imap { {}<Left>
+imap < <><Left>
+imap ' ''<Left>
+imap " ""<Left>
+
 nmap <silent> <C-_> :<C-w>call CommentLine('n')<CR>
 vmap <silent> <C-_> :<C-w>call CommentLine('v')<CR>
-nmap <silent> // :<C-w>call CommentLine('n')<CR>
-vmap <silent> // :<C-w>call CommentLine('v')<CR>
+" nmap <silent> // :<C-w>call CommentLine('n')<CR>
+" vmap <silent> // :<C-w>call CommentLine('v')<CR>
 " noremap <silent> // :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 " noremap <silent> <C-_> :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
