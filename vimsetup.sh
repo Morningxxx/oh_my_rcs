@@ -70,5 +70,5 @@ cd ~/.vim/bundle
 git clone https://github.com/Yggdroot/indentLine.git
 
 # jedi-vim
-cd ~/.vim/bundle
-git clone --recursive https://github.com/davidhalter/jedi-vim.git
+# cd ~/.vim/bundle
+# git clone --recursive https://github.com/davidhalter/jedi-vim.git

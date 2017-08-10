@@ -65,6 +65,7 @@ export LANG=en_US.UTF-8
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
+eval $(thefuck --alias)
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 

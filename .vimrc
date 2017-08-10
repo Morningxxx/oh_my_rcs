@@ -28,6 +28,8 @@ set mouse=a
 set ruler
 set clipboard=unnamed
  
+:set matchpairs=[:],{:},<:>,(:)
+
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala,javascript let b:comment_leader = '// '
 autocmd FileType sh,ruby,python              let b:comment_leader = '# '
@@ -35,6 +37,7 @@ autocmd FileType conf,fstab                  let b:comment_leader = '# '
 autocmd FileType tex                         let b:comment_leader = '% '
 autocmd FileType mail                        let b:comment_leader = '> '
 autocmd FileType vim                         let b:comment_leader = '" '
+
 function CommentLine(mode)
     let a:pattern = escape(b:comment_leader, '\/')
     if a:mode == 'v'
@@ -62,8 +65,8 @@ imap ( ()<Left>
 imap [ []<Left>
 imap { {}<Left>
 imap < <><Left>
-imap ' ''<Left>
-imap " ""<Left>
+imap ' <C-v>'<C-v>'<Left>
+imap " <C-v>"<C-v>"<Left>
 
 nmap <silent> <C-_> :<C-w>call CommentLine('n')<CR>
 vmap <silent> <C-_> :<C-w>call CommentLine('v')<CR>
@@ -78,6 +81,14 @@ nmap <Space><CR> O<ESC>
 
 command RTW :%s/\s\+$//e
 command Q :on | q
+command R :w | e!
+
+nmap N Nzz
+nmap n nzz
+nmap g; g;zz
+nmap g, g,zz
+nmap # #zz
+nmap * *zz
 
 let g:netrw_browse_split = 4
 let g:netrw_preview      = 1
