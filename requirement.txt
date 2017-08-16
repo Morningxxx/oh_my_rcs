@@ -3,3 +3,4 @@ virtualenv
 virtualenvwrapper
 requests
 powerline-status
+pyflakes

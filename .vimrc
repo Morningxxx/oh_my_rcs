@@ -110,6 +110,7 @@ command V :NERDTreeToggle
 command GT :GitGutterToggle
 
 let NERDTreeIgnore = ['.pyc$', '.swo$', '.swp$']
+let NERDTreeShowHidden = 1
 
 let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint快
 let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712,W391'

@@ -58,7 +58,6 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-
 export PATH="/usr/local/go/bin:/usr/local/bin:$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -103,4 +102,6 @@ alias gct="git checkout"
 alias gcob="git checkout -b"
 alias gpl="git pull"
 alias gps="git push"
+
+alias gtop="LANG=en_US.utf8 TERM=xterm-256color gtop"
 . /Library/Python/2.7/site-packages/powerline/bindings/bash/powerline.sh
