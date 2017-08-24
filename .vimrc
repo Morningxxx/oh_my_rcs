@@ -13,6 +13,7 @@ set modeline
 set hlsearch
 set incsearch
 set ignorecase
+set smartcase
 set nu
 set rnu
 set cursorline

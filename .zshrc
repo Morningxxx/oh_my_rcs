@@ -103,5 +103,11 @@ alias gcob="git checkout -b"
 alias gpl="git pull"
 alias gps="git push"
 
+alias pkm="pokemon"
+alias pkmr="pokemon random"
+
 alias gtop="LANG=en_US.utf8 TERM=xterm-256color gtop"
 . /Library/Python/2.7/site-packages/powerline/bindings/bash/powerline.sh
+
+# pkm=$(( ( RANDOM % 493 )  + 1 ))
+pokemon kabuto
