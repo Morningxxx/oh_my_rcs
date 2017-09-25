@@ -29,7 +29,9 @@ set mouse=a
 set ruler
 set clipboard=unnamed
  
-:set matchpairs=[:],{:},<:>,(:)
+set matchpairs=[:],{:},<:>,(:)
+
+set path+=getcwd().'/**/*'
 
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala,javascript let b:comment_leader = '// '

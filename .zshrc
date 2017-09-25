@@ -42,7 +42,7 @@ ZSH_THEME="bira"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -95,6 +95,8 @@ alias gst="git stash"
 alias grb="git rebase -i"
 alias grbc="git rebase --continue"
 alias grba="git rebase --abort"
+alias grst="git reset"
+alias grsh="git reset --hard"
 alias gs="git status"
 alias gaa="git add ."
 alias gcm="git commit -m "
@@ -109,5 +111,6 @@ alias pkmr="pokemon random"
 alias gtop="LANG=en_US.utf8 TERM=xterm-256color gtop"
 . /Library/Python/2.7/site-packages/powerline/bindings/bash/powerline.sh
 
-# pkm=$(( ( RANDOM % 493 )  + 1 ))
-pokemon kabuto
+pkm=$(( ( RANDOM % 493 )  + 1 ))
+# pokemon kabuto
+pokemon $pkm
