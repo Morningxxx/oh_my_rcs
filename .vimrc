@@ -81,6 +81,9 @@ vmap <silent> <C-_> :<C-w>call CommentLine('v')<CR>
 nmap <CR> o<ESC>
 nmap <Space><CR> O<ESC>
 "nmap <S-CR> O<ESC> " only work on GVim
+"
+onoremap <silent> ie :<C-U>normal! ggVG<CR>
+onoremap <silent> ae :<C-U>normal! ggVG<CR>
 
 command RTW :%s/\s\+$//e
 command Q :on | q
