@@ -28,8 +28,8 @@ set wildmenu
 set mouse=a
 set ruler
 set clipboard=unnamed
- 
-set matchpairs=[:],{:},<:>,(:)
+
+set matchpairs=[:],{:},<:>,(:),':',":"
 
 set path+=getcwd().'/**/*'
 
@@ -44,11 +44,11 @@ autocmd FileType vim                         let b:comment_leader = '" '
 function CommentLine(mode)
     let a:pattern = escape(b:comment_leader, '\/')
     if a:mode == 'v'
-       "  try
-       "      execute "silent '<,'>s/^\v(\s*)\V".a:pattern."/\1/g"
-       "  catch
-       "      execute "silent '<,'>s/^\(\s*\)/\1".a:pattern."/g"
-       "  endtry
+        "  try
+        "      execute "silent '<,'>s/^\v(\s*)\V".a:pattern."/\1/g"
+        "  catch
+        "      execute "silent '<,'>s/^\(\s*\)/\1".a:pattern."/g"
+        "  endtry
         try
             execute "silent '<,'>s/^".a:pattern."//g"
         catch
@@ -86,7 +86,9 @@ onoremap <silent> ie :<C-U>normal! ggVG<CR>
 onoremap <silent> ae :<C-U>normal! ggVG<CR>
 
 command RTW :%s/\s\+$//e
+" close current tab
 command Q :on | q
+" refresh current window to keep flent
 command R :w | e!
 
 nmap N Nzz
@@ -128,12 +130,12 @@ python powerline_setup()
 python del powerline_setup
 
 if ! has('gui_running')
-   set ttimeoutlen=10
-   augroup fastescape
-      autocmd!
-      au insertenter * set timeoutlen=0
-      au InsertLeave * set timeoutlen=1000
-   augroup END
+    set ttimeoutlen=10
+    augroup fastescape
+        autocmd!
+        au insertenter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
 endif
 
 set laststatus=2 " Always display the statusline in all windows
