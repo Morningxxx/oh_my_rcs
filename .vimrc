@@ -33,6 +33,8 @@ set matchpairs=[:],{:},<:>,(:),':',":"
 
 set path+=getcwd().'/**/*'
 
+imap <TAB> <C-N>
+
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala,javascript let b:comment_leader = '// '
 autocmd FileType sh,ruby,python              let b:comment_leader = '# '
@@ -84,6 +86,12 @@ nmap <Space><CR> O<ESC>
 "
 onoremap <silent> ie :<C-U>normal! ggVG<CR>
 onoremap <silent> ae :<C-U>normal! ggVG<CR>
+
+onoremap <silent> i_ :<C-U>normal! T_vt_<CR>
+onoremap <silent> a_ :<C-U>normal! F_vf_<CR>
+
+onoremap <silent> i- :<C-U>normal! T-vt-<CR>
+onoremap <silent> a- :<C-U>normal! F-vf-<CR>
 
 command RTW :%s/\s\+$//e
 " close current tab
