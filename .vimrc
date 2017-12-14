@@ -93,6 +93,9 @@ onoremap <silent> a_ :<C-U>normal! F_vf_<CR>
 onoremap <silent> i- :<C-U>normal! T-vt-<CR>
 onoremap <silent> a- :<C-U>normal! F-vf-<CR>
 
+onoremap <silent> i. :<C.U>normal! T.vt.<CR>
+onoremap <silent> a. :<C.U>normal! F.vf.<CR>
+
 command RTW :%s/\s\+$//e
 " close current tab
 command Q :on | q
