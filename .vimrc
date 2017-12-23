@@ -120,9 +120,10 @@ nmap <TAB> <C-w><C-w>
 " these lnes setup the environment to show graphics and colors correctly.
 set nocompatible
 set t_co=256
-colorscheme afterglow
+colorscheme molokai
 
 execute pathogen#infect()
+execute pathogen#helptags()
 
 command L :NERDTreeToggle
 command V :NERDTreeToggle
