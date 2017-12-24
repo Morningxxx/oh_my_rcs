@@ -33,8 +33,19 @@ set matchpairs=[:],{:},<:>,(:),':',":"
 
 set path+=getcwd().'/**/*'
 
-imap <TAB> <C-N>
+let g:netrw_browse_split = 4
+let g:netrw_preview      = 1
+let g:netrw_liststyle    = 3
+let g:netrw_winsize      = 25
+let g:netrw_list_hide    = '.*\.pyc' 
 
+" these lines setup the environment to show graphics and colors correctly.
+set nocompatible
+set t_co=256
+colorscheme molokai
+
+" custom key mapping
+" comment lines
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala,javascript let b:comment_leader = '// '
 autocmd FileType sh,ruby,python              let b:comment_leader = '# '
@@ -43,6 +54,7 @@ autocmd FileType tex                         let b:comment_leader = '% '
 autocmd FileType mail                        let b:comment_leader = '> '
 autocmd FileType vim                         let b:comment_leader = '" '
 
+" comment action
 function CommentLine(mode)
     let a:pattern = escape(b:comment_leader, '\/')
     if a:mode == 'v'
@@ -66,24 +78,30 @@ function CommentLine(mode)
     nohlsearch
 endfunction
 
+" comment mapping
+nmap <silent> <C-_> :<C-w>call CommentLine('n')<CR>
+vmap <silent> <C-_> :<C-w>call CommentLine('v')<CR>
+
+" User TAB to complete in insert mode
+imap <TAB> <C-N>
+" use tab to switch among windows in normal mode
+nmap <TAB> <C-w><C-w>
+
+" auto pair operator
 imap ( ()<Left>
 imap [ []<Left>
 imap { {}<Left>
 imap < <><Left>
 imap ' <C-v>'<C-v>'<Left>
 imap " <C-v>"<C-v>"<Left>
+autocmd FileType vim iu "
 
-nmap <silent> <C-_> :<C-w>call CommentLine('n')<CR>
-vmap <silent> <C-_> :<C-w>call CommentLine('v')<CR>
-" nmap <silent> // :<C-w>call CommentLine('n')<CR>
-" vmap <silent> // :<C-w>call CommentLine('v')<CR>
-" noremap <silent> // :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-" noremap <silent> <C-_> :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
-
+" insert blank line
 nmap <CR> o<ESC>
 nmap <Space><CR> O<ESC>
-"nmap <S-CR> O<ESC> " only work on GVim
-"
+" nmap <S-CR> O<ESC> " only work on GVim
+
+" add custom operator mapping
 onoremap <silent> ie :<C-U>normal! ggVG<CR>
 onoremap <silent> ae :<C-U>normal! ggVG<CR>
 
@@ -93,15 +111,13 @@ onoremap <silent> a_ :<C-U>normal! F_vf_<CR>
 onoremap <silent> i- :<C-U>normal! T-vt-<CR>
 onoremap <silent> a- :<C-U>normal! F-vf-<CR>
 
-onoremap <silent> i. :<C.U>normal! T.vt.<CR>
-onoremap <silent> a. :<C.U>normal! F.vf.<CR>
+onoremap <silent> i. :<C-U>normal! T.vt.<CR>
+onoremap <silent> a. :<C-U>normal! F.vf.<CR>
 
-command RTW :%s/\s\+$//e
-" close current tab
-command Q :on | q
-" refresh current window to keep flent
-command R :w | e!
+onoremap <silent> it :<C-U>normal! T>vt<<CR>
+onoremap <silent> at :<C-U>normal! F>vf<<CR>
 
+" find and make result centor
 nmap N Nzz
 nmap n nzz
 nmap g; g;zz
@@ -109,33 +125,57 @@ nmap g, g,zz
 nmap # #zz
 nmap * *zz
 
-let g:netrw_browse_split = 4
-let g:netrw_preview      = 1
-let g:netrw_liststyle    = 3
-let g:netrw_winsize      = 25
-let g:netrw_list_hide    = '.*\.pyc' 
+" custom command 
+" rm blank after lines 
+command RTW :%s/\s\+$//e
+" close current tab
+command Q :on | q
+" refresh current window to keep flent
+command R :w | e!
 
-nmap <TAB> <C-w><C-w>
-
-" these lnes setup the environment to show graphics and colors correctly.
-set nocompatible
-set t_co=256
-colorscheme molokai
-
+" plugin manage
+" pathogen start
 execute pathogen#infect()
 execute pathogen#helptags()
 
-command L :NERDTreeToggle
-command V :NERDTreeToggle
+" GitGutter Setup
 command GT :GitGutterToggle
 
+" NerdTree setup
 let NERDTreeIgnore = ['.pyc$', '.swo$', '.swp$']
 let NERDTreeShowHidden = 1
+command L :NERDTreeToggle
+command V :NERDTreeToggle
 
+" pymode setup
+try
+    let g:pymode_folding = 0
+    let g:pymode_lint = 0
+    let g:pymode_options_colorcolumn = 1
+catch
+endtry
+
+" YCM
+try
+    set completeopt-=preview
+    let g:ycm_add_preview_to_completeopt = 0
+    let g:ycm_python_binary_path = 'python'
+    let g:ycm_goto_buffer_command = 'vertical-split'
+    let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    let g:ycm_seed_identifiers_with_syntax = 1
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_complete_in_strings = 1
+    autocmd FileType python let g:ycm_collect_identifiers_from_comments_and_strings = 0
+    nmap gjd :<C-w>YcmCompleter GoToDefinition<CR>
+catch
+endtry
+
+" syntastic setup
 let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint快
 let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712,W391'
-
 let g:minbufexplforcesyntaxenable = 1
+
+" powerline setup
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()

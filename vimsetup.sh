@@ -36,7 +36,6 @@ git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdt
 
 # supertab
 cd ~/.vim/bundle
-pwd
 git clone https://github.com/ervandew/supertab.git
 
 # vim-fugitive
@@ -50,6 +49,13 @@ git clone https://github.com/airblade/vim-gitgutter
 # indentLine
 cd ~/.vim/bundle
 git clone https://github.com/Yggdroot/indentLine.git
+
+# YouCompleteMe
+cd ~/.vim/bundle
+git clone https://github.com/valloric/youcompleteme
+cd ~/.vim/bundle/YouCompleteMe
+git submodule update --init --recursive
+./install.py
 
 # jedi-vim
 # cd ~/.vim/bundle
