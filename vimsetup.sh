@@ -1,4 +1,4 @@
-# /bin/bash
+#!/bin/bash
 
 #setup theme
 cd ~
@@ -57,9 +57,9 @@ cd ~/.vim/bundle/YouCompleteMe
 git submodule update --init --recursive
 ./install.py
 
-# jedi-vim
-# cd ~/.vim/bundle
-# git clone --recursive https://github.com/davidhalter/jedi-vim.git
+# pymode
+cd ~/.vim/bundle
+git clone https://github.com/klen/python-mode
 
 # setup powerline
 pip install powerline-status
