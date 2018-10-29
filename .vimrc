@@ -22,7 +22,7 @@ set cursorline
 autocmd InsertEnter * :set nornu
 autocmd InsertLeave * :set rnu
 
-set updatetime=500
+set updatetime=6000
 
 set wildmenu
 set mouse=a
@@ -132,6 +132,8 @@ command RTW :%s/\s\+$//e
 command Q :on | q
 " refresh current window to keep flent
 command R :w | e!
+" quote words in the line
+command QTL :'<,'>s/\v(\w+)/"\1",/g
 
 " plugin manage
 " pathogen start
@@ -145,17 +147,26 @@ command GT :GitGutterToggle
 let NERDTreeIgnore = ['.pyc$', '.swo$', '.swp$']
 let NERDTreeShowHidden = 1
 command L :NERDTreeToggle
-command V :NERDTreeToggle
+command LL :NERDTreeFind
+command V :NERDTreeFind
 
 " pymode setup
 try
+    let g:pymode = 0
+    let g:pymode_options = 0
     let g:pymode_folding = 0
     let g:pymode_lint = 0
     let g:pymode_rope_completion = 0
     let g:pymode_indent = 0
     let g:pymode_rope = 0
-    let g:pymode_syntax_all = 1
-    let g:pymode_options_colorcolumn = 1
+"     let g:pymode_rope_completion = 1
+   let g:pymode_syntax_all = 1
+"     let g:pymode_syntax_highlight_self = 1
+"     let g:pymode_syntax_highlight_equal_operator = 1
+"     let g:pymode_syntax_builtin_objs = 1
+"     let g:pymode_syntax_builtin_types = 1
+"     let g:pymode_options_colorcolumn = 1
+"     let g:pymode_options_max_line_length = 119
 catch
 endtry
 
@@ -165,12 +176,13 @@ try
     let g:ycm_add_preview_to_completeopt = 0
     let g:ycm_python_binary_path = 'python'
     let g:ycm_goto_buffer_command = 'vertical-split'
-    let g:ycm_collect_identifiers_from_comments_and_strings = 1
-    let g:ycm_seed_identifiers_with_syntax = 1
+    let g:ycm_seed_identifiers_with_syntax = 0
     let g:ycm_complete_in_comments = 1
     let g:ycm_complete_in_strings = 1
-    autocmd FileType python let g:ycm_collect_identifiers_from_comments_and_strings = 0
-    nmap gjd :<C-w>YcmCompleter GoToDefinition<CR>
+    let g:ycm_cache_omnifunc = 0
+"     let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"     autocmd FileType python let g:ycm_collect_identifiers_from_comments_and_strings = 0
+    nmap gjd :<C-w>YcmCompleter GoTo<CR>
 catch
 endtry
 
@@ -178,6 +190,8 @@ endtry
 let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint快
 let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712,W391'
 let g:minbufexplforcesyntaxenable = 1
+
+let g:javascript_plugin_jsdoc = 1
 
 " powerline setup
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
