@@ -160,13 +160,14 @@ try
     let g:pymode_indent = 0
     let g:pymode_rope = 0
 "     let g:pymode_rope_completion = 1
-   let g:pymode_syntax_all = 1
 "     let g:pymode_syntax_highlight_self = 1
 "     let g:pymode_syntax_highlight_equal_operator = 1
 "     let g:pymode_syntax_builtin_objs = 1
 "     let g:pymode_syntax_builtin_types = 1
 "     let g:pymode_options_colorcolumn = 1
 "     let g:pymode_options_max_line_length = 119
+    let g:pymode_syntax_all = 1
+    let g:pymode_options_colorcolumn = 1
 catch
 endtry
 
@@ -186,6 +187,8 @@ try
 catch
 endtry
 
+" add comment
+"
 " syntastic setup
 let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint快
 let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712,W391'
