@@ -22,8 +22,6 @@ set cursorline
 autocmd InsertEnter * :set nornu
 autocmd InsertLeave * :set rnu
 
-set updatetime=6000
-
 set wildmenu
 set mouse=a
 set ruler
@@ -133,7 +131,8 @@ command Q :on | q
 " refresh current window to keep flent
 command R :w | e!
 " quote words in the line
-command QTL :'<,'>s/\v(\w+)/"\1",/g
+command QTL :'<,'>s/\v^(.+)$/"\1",/g
+command QTW :'<,'>s/\v(\w+)/"\1",/g
 
 " plugin manage
 " pathogen start
@@ -142,6 +141,8 @@ execute pathogen#helptags()
 
 " GitGutter Setup
 command GT :GitGutterToggle
+
+set updatetime=6000
 
 " NerdTree setup
 let NERDTreeIgnore = ['.pyc$', '.swo$', '.swp$']
