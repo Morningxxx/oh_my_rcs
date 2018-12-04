@@ -133,6 +133,8 @@ command R :w | e!
 " quote words in the line
 command QTL :'<,'>s/\v^(.+)$/"\1",/g
 command QTW :'<,'>s/\v(\w+)/"\1",/g
+command STC :%s/_\(\w\)/\u\1/g
+command CTS :%s/\([^ .*+-]\)\([A-Z].\)/\1_\2/g
 
 " plugin manage
 " pathogen start
