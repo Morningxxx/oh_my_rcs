@@ -1,6 +1,8 @@
 # /bin/bash
 
+# install homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 mv ./.zshrc ~/
@@ -13,5 +15,9 @@ rm get-pip.py
 pip install --upgrade pip
 pip install -r ./requirement.txt --user
 /bin/bash ./vimsetup.sh
-source ~/.vimrc
+
+# install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+source ~/.zshrc
 
