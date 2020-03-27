@@ -63,6 +63,7 @@ export PATH="$HOME/.cargo/bin:/usr/local/go/bin:/usr/local/bin:$PATH"
 source $HOME/.cargo/env
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export EDITOR="vim"
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
