@@ -14,6 +14,8 @@ python get-pip.py
 rm get-pip.py
 pip install --upgrade pip
 pip install -r ./requirement.txt --user
+# install pokemon terminal
+npm install --global pokemon-terminal
 /bin/bash ./vimsetup.sh
 
 # install rust
