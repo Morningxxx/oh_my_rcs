@@ -8,7 +8,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 mv ./.zshrc ~/
 mv ./.vimrc ~/
 
-brew install git wget tig mysql mongodb python2 python3 npm vim
+brew install git wget tig mysql mongodb python2 python3 npm vim thefuck
 cd ./ && wget https://bootstrap.pypa.io/get-pip.py
 python get-pip.py
 rm get-pip.py

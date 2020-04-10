@@ -51,7 +51,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python autojump osx)
+plugins=(git python osx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,7 +66,7 @@ export LANG=en_US.UTF-8
 export EDITOR="vim"
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 eval $(thefuck --alias)
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -111,8 +111,9 @@ alias gps="git push"
 alias pkm="pokemon"
 alias pkmr="pokemon random"
 
-alias gtop="LANG=en_US.utf8 TERM=xterm-256color gtop"
-. /Library/Python/2.7/site-packages/powerline/bindings/bash/powerline.sh
+# power line
+# alias gtop="LANG=en_US.utf8 TERM=xterm-256color gtop"
+# . /Library/Python/2.7/site-packages/powerline/bindings/bash/powerline.sh
 
 pkm=$(( ( RANDOM % 493 )  + 1 ))
 # pokemon kabuto
