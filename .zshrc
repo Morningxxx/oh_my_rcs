@@ -60,6 +60,8 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$HOME/.cargo/bin:/usr/local/go/bin:/usr/local/bin:$PATH"
 
+HOMEBREW_NO_AUTO_UPDATE=1
+
 source $HOME/.cargo/env
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
